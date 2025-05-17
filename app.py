@@ -29,7 +29,6 @@ def index():
         binary_preds = (preds > 0.5).astype(int)
         prediction = dict(zip(LABELS, binary_preds))
 
-        # график
         plt.figure(figsize=(8, 4))
         plt.bar(LABELS, preds, color='salmon')
         plt.ylim(0, 1)
