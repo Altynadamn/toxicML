@@ -14,10 +14,8 @@ LABELS = ['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate
 model = load_model('models/best_model_lstm.h5')
 tokenizer = joblib.load('models/tokenizer.pkl')
 
-port = int(os.environ.get("PORT", 5000))
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=port)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     prediction = None
@@ -48,5 +46,6 @@ def index():
 
     return render_template('index.html', prediction=prediction, plot_url=plot_url)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
