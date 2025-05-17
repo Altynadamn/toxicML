@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: toxic-ml-app
+    env: python
+    plan: free # или другой план
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    autoDeploy: true
+    envVars:
+      - key: FLASK_ENV
+        value: production
